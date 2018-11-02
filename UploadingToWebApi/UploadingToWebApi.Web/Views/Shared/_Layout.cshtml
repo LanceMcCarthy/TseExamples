@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!--This bundle was moved by the Telerik VS Extensions for compatibility reasons-->
+    @Scripts.Render("~/bundles/jquery")
+    	<link href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common-nova.min.css" rel="stylesheet" type="text/css" />
+	<link href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+	<link href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.nova.min.css" rel="stylesheet" type="text/css" />
+	<script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jquery.min.js"></script>
+	<script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jszip.min.js"></script>
+	<script src="https://kendo.cdn.telerik.com/2018.3.1017/js/kendo.all.min.js"></script>
+	<script src="https://kendo.cdn.telerik.com/2018.3.1017/js/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/ReportViewer/js/telerikReportViewer-12.2.18.1017.min.js")"></script>
+    <style>
+        #reportViewer1 {
+            position: relative;
+            width: 1300px;
+            height: 900px;
+            font-family: Verdana, Arial;
+        }
+    </style>
+	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Backend Services for Demo Applications", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("HTML5 Report Viewer", "ReportViewerView1", "Home", new { area = "" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Lance McCarthy - Backend Services for Demo Applications</p>
+        </footer>
+    </div>
+
+    
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

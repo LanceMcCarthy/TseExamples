@@ -1,0 +1,23 @@
+﻿@using Telerik.ReportViewer.Mvc
+
+<div class="jumbotron">
+    <h1>Up and Running</h1>
+    <p>This web app is hosting several testing controllers; A UI for WPF RadCloudUpload, Reporting, PDF Generator</p>
+    
+    <br />
+    
+    <p>Source code for this app, along with client applications, can be found at <a href="https://github.com/LanceMcCarthy/TseExamples/UploadingToWebApi">TSE Examples - Uploading To WebAPI</a> </p>
+
+    <ul>
+        <li><b>Values</b>: The <i>api/values</i> endpoint can be used to check APIs are running</li>
+        <li><b>Reports</b>: The <i>api/reports</i> endpoint is only used by the @Html.ActionLink("HTML5 ReportViewer demo", "ReportViewerView1", "Home", new { area = "" }, null)</li>
+        <li><b>PdfGenerator</b>: The <i>api/pdfgenerator</i> endpoint is for the following examples from client applications:
+            <ul>
+                <li>A PDF with custom string content uploaded from client app (see WPF and UWP demos)</li>
+                <li>A PDF with rendered XAML UI uploaded from client as image (see UWP demo)</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <img src="https://user-images.githubusercontent.com/3520532/47941263-d3e83680-dec3-11e8-8020-148c385cb11e.png" alt="UWP Example at Runtime" width="600"/>
+</div>

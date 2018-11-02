@@ -1,0 +1,22 @@
+﻿<Window x:Class="UploadingToWebApi.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        Title="MainWindow"
+        Height="900"
+        Width="900">
+    <Grid>
+        <!--<telerik:RadCloudUpload x:Name="CloudUpload"/>-->
+        <telerik:RadPdfViewer x:Name="pdfViewer" />
+        <TextBlock x:Name="OutputLabel"
+                   Text="Click button to generate PDF on the server and open locally in RadPdfViewer."
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="20" />
+        <Button Content="Create PDF Document"
+                Click="ButtonBase_OnClick"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="20" />
+    </Grid>
+</Window>
