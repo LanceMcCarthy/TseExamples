@@ -1,3 +1,5 @@
+using System.Web.Http.Cors;
+
 namespace UploadingToWebApi.Web.Controllers
 {
     using System.IO;
@@ -6,8 +8,9 @@ namespace UploadingToWebApi.Web.Controllers
     using Telerik.Reporting.Services;
     using Telerik.Reporting.Services.WebApi;
 
-	//The class name determines the service URL. 
-	//ReportsController class name defines /api/report/ service URL.
+    //The class name determines the service URL. 
+    //ReportsController class name defines /api/report/ service URL.
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ReportsController : ReportsControllerBase
     {
         static ReportServiceConfiguration configurationInstance;
