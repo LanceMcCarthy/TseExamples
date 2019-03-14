@@ -261,8 +261,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="ReportViewer\js\telerikReportViewer-12.2.18.1017.min.js" />
-    <Content Include="ReportViewer\js\telerikReportViewer.kendo-12.2.18.1017.min.js" />
+    <Content Include="ReportViewer\js\telerikReportViewer-13.0.19.222.min.js" />
+    <Content Include="ReportViewer\js\telerikReportViewer.kendo-13.0.19.222.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
