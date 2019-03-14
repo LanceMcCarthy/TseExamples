@@ -269,9 +269,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\WebApiForTelerikDemos - Web Deploy.pubxml" />
-    <Content Include="Reports\SampleReport.trdp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Properties\PublishProfiles\WebApiForTelerikDemos - Web Deploy1.pubxml" />
     <Content Include="Reports\Barcodes Report.trdp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
