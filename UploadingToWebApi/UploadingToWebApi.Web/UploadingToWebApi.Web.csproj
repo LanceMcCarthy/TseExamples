@@ -62,12 +62,12 @@
     </Reference>
     <Reference Include="Kendo.Mvc, Version=2020.2.617.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\wrappers\aspnetmvc\Binaries\Mvc5\Kendo.Mvc.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\wrappers\aspnetmvc\Binaries\Mvc5\Kendo.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Kendo.Mvc.Export, Version=2020.2.617.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\export\binaries\net40\Kendo.Mvc.Export.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\export\binaries\net40\Kendo.Mvc.Export.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -202,68 +202,68 @@
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Documents.SpreadsheetStreaming, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Documents.SpreadsheetStreaming.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Documents.SpreadsheetStreaming.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Reporting, Version=14.1.20.618, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.Reporting.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.Reporting.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Reporting.OpenXmlRendering.2.7.2, Version=14.1.20.618, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.Reporting.OpenXmlRendering.2.7.2.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.Reporting.OpenXmlRendering.2.7.2.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Reporting.Services.WebApi, Version=14.1.20.618, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.Reporting.Services.WebApi.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.Reporting.Services.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Reporting.XpsRendering, Version=14.1.20.618, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.Reporting.XpsRendering.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.Reporting.XpsRendering.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.ReportViewer.Mvc, Version=14.1.20.618, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.ReportViewer.Mvc.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik Reporting R2 2020\Bin\Telerik.ReportViewer.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Web.Spreadsheet, Version=2020.2.617.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Web.Spreadsheet.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Web.Spreadsheet.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Core, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Core.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Fixed, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Fixed.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Flow, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Flow.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Flow.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Spreadsheet, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Windows.Zip, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Zip.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Zip.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Windows.Zip.Extensions, Version=2020.2.615.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Zip.Extensions.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2020\spreadsheet\binaries\net40\Telerik.Windows.Zip.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
