@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="/api/reports/resources/js/telerikReportViewer"></script>
+
+<div id="reportViewer1"> 
+    loading... 
+</div>
+
+<script> 
+    $(document).ready(function () { 
+        $("#reportViewer1") 
+            .telerik_ReportViewer({ 
+                serviceUrl: "api/reports/", 
+                reportSource: { 
+                    report: "Barcodes Report.trdp", 
+                    parameters: {} 
+                }, 
+                viewMode: telerikReportViewer.ViewModes.INTERACTIVE, 
+                scaleMode: telerikReportViewer.ScaleModes.SPECIFIC, 
+                scale: 1.0,
+                enableAccessibility: false,
+                sendEmail: { enabled: true }
+            }); 
+    }); 
+</script> 
