@@ -1,23 +1,39 @@
-# TseExamples
-The core repository for TSE example apps across all DevCraft products.
+# TSE Examples
 
-## 1. Reporting REST API on Linux
+A set of demo projects for special edge cases presented to Progress DevTools Support Engineers.
+
+| Workflow      | Build Status |
+|---------------|--------------|
+| `main`         | [![Build Main](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/main.yml/badge.svg)](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/main.yml)                             |
+| `release-linux` | [![Publish Linux Server](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/release-linux.yml/badge.svg)](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/release-linux.yml) |
+
+## Demos
+
+### 1. Reporting REST API on Linux using .NET 5.0
 
 This project shows that you can build an ASP.NET application  with .NET 5 and deploy to Linux. This works on any target that .NET Core/.NET 5 has a runtime for (e.g. from Ubuntu to Raspberry Pi OS).
 
 Go to https://docs.microsoft.com/en-us/dotnet/core/install/linux to find runtime installation instructions for your version of Linux.
 
-## 2 UploadingToWebApi
+### 2 Uploading To WebApi
 
-This demo contains three projects. An ASP.NET application with Web APIs and MVC views, and WPF & UWP client applications to interact with the APIs.
+This demo contains three projects:
 
-### Telerik Reporting REST Service
+- Server Application with Web and REST APIs
+  - ASP.NET MVC5
+- Client Applications to consume Web APIs
+  - WPF
+  - UWP
 
-This is a straightforward demo that hosts a Telerik Reporting REST Service (ReportsController.cs) so that you can see the HTML5 ReportViewer in an MVC View. You can see this demo now at the following link  <a href="http://webapifortelerikdemos.azurewebsites.net/Home/ReportViewerView1" target="_blank">HTML5 ReportViewer in MVC View</a>
+#### Server
 
-### PDF Generator Web API
+**Telerik Reporting REST Service**
 
-The PDF Generator WebAPI is an ApiController that will return a PDF file from custom uploaded content. The working being done on the server means you can use any client (UWP, Xamarin.Forms, WPF, etc).
+This is a straightforward demo that hosts a Telerik Reporting REST Service (ReportsController.cs) so that you can see the HTML5 ReportViewer in an MVC View ([visit the live demo](http://webapifortelerikdemos.azurewebsites.net/Home/ReportViewerView)).
+
+**PDF Generator Web API**
+
+The PDF Generator WebAPI is an ApiController that will return a PDF file from custom uploaded content in the form of JSON data. This means you can use any client application to create the PDF.
 
 ```csharp
 public class MyPdfContent
@@ -34,10 +50,9 @@ public class MyPdfContent
 }
 ```
 
+#### Client
 
-#### Example
-
-The Visual Studio solution contains two client demo apps, WPF one and UWP. Here's the UWP client example app rendering the runtime XAML in a PDF document.
+Here's the UWP client example app rendering runtime UI (XAML) as base64 image data, which gets uploaded to the server and inserted in a dynamically created PDF document.
 
 
 ![image](https://user-images.githubusercontent.com/3520532/47941263-d3e83680-dec3-11e8-8020-148c385cb11e.png)
