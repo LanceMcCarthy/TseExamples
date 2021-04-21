@@ -20,19 +20,28 @@ jobs:
         dotnet-version: 5.0.200
 
     - name: Restore NuGet Packages
-      run: dotnet restore ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configfile ReportingOnLinux/nuget.config --runtime any
+      run: |
+        dotnet restore ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configfile ReportingOnLinux/nuget.config -r linux-arm64
+        dotnet restore ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configfile ReportingOnLinux/nuget.config -r linux-arm
+        dotnet restore ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configfile ReportingOnLinux/nuget.config -r linux-x64
       env:
         TELERIK_USERNAME: ${{ secrets.MyTelerikAccountUsername }}
         TELERIK_PASSWORD: ${{ secrets.MyTelerikAccountPassword }}
 
     - name: Build Solution
-      run: dotnet build ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configuration Release --no-restore
+      run: |
+        dotnet build ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configuration Release --no-restore -r linux-arm64
+        dotnet build ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configuration Release --no-restore -r linux-arm
+        dotnet build ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configuration Release --no-restore -r linux-x64
 
     - name: Publish Application
-      run: dotnet publish ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj -f net5.0 -r linux-arm64 -c Release --self-contained --no-restore -o ReportingOnLinux/ReportingOnLinux/bin/Release/net5.0/publish/
+      run: |
+        dotnet publish ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj -f net5.0 -c Release --self-contained --no-restore -r linux-arm64
+        dotnet publish ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj -f net5.0 -c Release --self-contained --no-restore -r linux-arm
+        dotnet publish ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj -f net5.0 -c Release --self-contained --no-restore -r linux-x64
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: ReportingServer_NET50
-        path: ReportingOnLinux/ReportingOnLinux/bin/
+        name: ReportingServer_Linux_NET50
+        path: ReportingOnLinux/ReportingOnLinux/bin/Release/net5.0/
