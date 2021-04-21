@@ -30,6 +30,8 @@ jobs:
 
   build_wpf:
     runs-on: windows-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true # this is to allow nuget.exe to be set to PATH
     
     steps:
     - name: Checkout
@@ -56,6 +58,8 @@ jobs:
 
   build_web:
     runs-on: windows-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true # this is to allow nuget.exe to be set to PATH
     
     steps:
     - name: Checkout
