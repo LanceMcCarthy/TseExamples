@@ -1,0 +1,42 @@
+name: Publish Linux Server
+
+on:
+  push:
+    branches: [ release-linux ]
+
+jobs:
+  build_linux:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1.7.2
+      with:
+        dotnet-version: 5.0.200
+
+    - name: Restore NuGet Packages
+      run: dotnet restore $env:SOLUTION_PATH --configfile $env:NUGETCONFIG_PATH --runtime any
+      env:
+        SOLUTION_PATH: ReportingOnLinux\ReportingOnLinux.sln
+        NUGETCONFIG_PATH: ReportingOnLinux\nuget.config
+        CONFIGURATION: Release
+        TELERIK_USERNAME: ${{ secrets.MyTelerikAccountUsername }}
+        TELERIK_PASSWORD: ${{ secrets.MyTelerikAccountPassword }}
+
+    - name: Build Solution
+      run: dotnet build $env:SOLUTION_PATH --configuration $env:CONFIGURATION --no-restore
+      env:
+        SOLUTION_PATH: ReportingOnLinux\ReportingOnLinux.sln
+        CONFIGURATION: Release
+
+    - name: Publish Application
+      run: dotnet publish $env:SOLUTION_PATH --framework net5.0 --configuration $env:CONFIGURATION --no-restore --output $env:PUBLISH_FOLDER
+      env:
+        SOLUTION_PATH: ReportingOnLinux\ReportingOnLinux.sln
+        CONFIGURATION: Release
+        PUBLISH_FOLDER: ReportingOnLinux\ReportingOnLinux\bin\Release\net5.0\publish\
