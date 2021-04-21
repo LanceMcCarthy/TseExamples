@@ -1,6 +1,6 @@
 ﻿/*
-* TelerikReporting v14.1.20.618 (http://www.telerik.com/products/reporting.aspx)
-* Copyright 2020 Progress Software EAD. All rights reserved.
+* TelerikReporting v15.0.21.326 (http://www.telerik.com/products/reporting.aspx)
+* Copyright 2021 Progress Software EAD. All rights reserved.
 *
 * Telerik Reporting commercial licenses may be obtained at
 * http://www.telerik.com/purchase/license-agreement/reporting.aspx
@@ -8,7 +8,7 @@
 */
 (function(window, undefined) {
     "$:nomunge";
-    var $ = window.jQuery || window.Cowboy || (window.Cowboy = {}), jq_throttle;
+    var $ = window.Cowboy || (window.Cowboy = {}), jq_throttle;
     $.throttle = jq_throttle = function(delay, no_trailing, callback, debounce_mode) {
         var timeout_id, last_exec = 0;
         if (typeof no_trailing !== "boolean") {
@@ -460,6 +460,7 @@
         errorObtainingAuthenticationToken: "Error obtaining authentication token.",
         clientExpired: "Click 'Refresh' to restore client session.",
         promisesChainStopError: "Error shown. Throwing promises chain stop error.",
+        renderingCanceled: "Report processing was canceled.",
         parameterEditorSelectNone: "clear selection",
         parameterEditorSelectAll: "select all",
         parametersAreaPreviewButton: "Preview",
@@ -467,6 +468,8 @@
         menuNavigateBackwardTitle: "Navigate Backward",
         menuNavigateForwardText: "Navigate Forward",
         menuNavigateForwardTitle: "Navigate Forward",
+        menuStopRenderingText: "Stop Rendering",
+        menuStopRenderingTitle: "Stop Rendering",
         menuRefreshText: "Refresh",
         menuRefreshTitle: "Refresh",
         menuFirstPageText: "First Page",
@@ -534,6 +537,7 @@
         ariaLabelSearchDialogUseRegex: "Use regex",
         ariaLabelMenuNavigateBackward: "Navigate backward",
         ariaLabelMenuNavigateForward: "Navigate forward",
+        ariaLabelMenuStopRendering: "Stop rendering",
         ariaLabelMenuRefresh: "Refresh",
         ariaLabelMenuFirstPage: "First page",
         ariaLabelMenuLastPage: "Last page",
@@ -1166,7 +1170,7 @@
             that.$pageContainer.off("click", ".trv-report-page").on("click", ".trv-report-page", function(e) {
                 that._clickPage($(e.currentTarget));
             });
-            that.$pageContainer.scroll($.throttle(250, function() {
+            that.$pageContainer.scroll(Cowboy.throttle(250, function() {
                 var pages = that.$placeholder.find(".trv-report-page"), scrollPosition = parseInt((that.$pageContainer.scrollTop() + that.$pageContainer.innerHeight()).toFixed(0));
                 if (!that.scrollInProgress && that.oldScrollTopPosition !== scrollPosition) {
                     if (that.oldScrollTopPosition > scrollPosition) {
@@ -1177,7 +1181,7 @@
                 }
                 that.oldScrollTopPosition = scrollPosition;
             }));
-            that.$pageContainer.scroll($.debounce(250, function() {
+            that.$pageContainer.scroll(Cowboy.debounce(250, function() {
                 var pages = that.$placeholder.find(".trv-report-page"), scrollPosition = parseInt((that.$pageContainer.scrollTop() + that.$pageContainer.innerHeight()).toFixed(0));
                 if (!that.scrollInProgress && pages.length && that.oldScrollTopPosition !== scrollPosition) {
                     that._advanceCurrentPage(pages);
@@ -1378,6 +1382,8 @@
                 iframe.onload = function() {
                     try {
                         iframe.contentDocument.execCommand("print", true, null);
+                    } catch (e) {
+                        utils.logError(e);
                     } finally {
                         if (sameOriginUrl) {
                             (window.URL || window.webkitURL).revokeObjectURL(sameOriginUrl);
@@ -2225,6 +2231,9 @@
             reportDocumentId = null;
             reportInstanceId = null;
             registerInstancePromise = null;
+            resetPageNumbers();
+        }
+        function resetPageNumbers() {
             currentPageNumber = pageCount = 0;
         }
         function formatError(args) {
@@ -2262,7 +2271,7 @@
             });
         }
         function getDocumentInfoRecursive(clientId, instanceId, documentId, options) {
-            if (instanceId === reportInstanceId) {
+            if (!options.isCanceled && instanceId === reportInstanceId) {
                 return client.getDocumentInfo(clientId, instanceId, documentId).catch(handleRequestError).then(function(info) {
                     if (info && info.documentReady) {
                         return info;
@@ -2394,6 +2403,9 @@
                 },
                 dispose: function() {
                     reportHost = null;
+                },
+                cancel: function() {
+                    loaderOptions.isCanceled = true;
                 }
             };
         }
@@ -2900,7 +2912,8 @@
             UI_STATE: "trv.UI_STATE",
             SCROLL_PAGE_READY: "trv.SCROLL_PAGE_READY",
             UPDATE_SCROLL_PAGE_DIMENSIONS_READY: "trv.UPDATE_SCROLL_PAGE_DIMENSIONS_READY",
-            MISSING_OR_INVALID_PARAMETERS: "trv.MISSING_OR_INVALID_PARAMETERS"
+            MISSING_OR_INVALID_PARAMETERS: "trv.MISSING_OR_INVALID_PARAMETERS",
+            RENDERING_STOPPED: "trv.RENDERING_STOPPED"
         };
         utils.extend(controller, {
             getPageData: function(pageNumber) {
@@ -3013,6 +3026,18 @@
             },
             refreshReportCore: function(ignoreCache, baseDocumentId, actionId) {
                 loadReportAsync(ignoreCache, baseDocumentId, actionId);
+            },
+            stopRendering: function() {
+                throwIfNoReport();
+                throwIfNoReportInstance();
+                throwIfNoReportDocument();
+                client.deleteReportDocument(clientId, reportInstanceId, reportDocumentId).catch(handleRequestError).then(function() {
+                    if (loader) {
+                        loader.cancel();
+                    }
+                    resetPageNumbers();
+                    controller.renderingStopped();
+                });
             },
             refreshReport: function(ignoreCache, baseDocumentId, actionId) {
                 controller.onLoadedReportChange();
@@ -3249,6 +3274,9 @@
             },
             missingOrInvalidParameters: function() {
                 return eventFactory(controller.Events.MISSING_OR_INVALID_PARAMETERS, arguments);
+            },
+            renderingStopped: function() {
+                return eventFactory(controller.Events.RENDERING_STOPPED, arguments);
             },
             clientExpired: clientExpired
         });
@@ -3507,6 +3535,9 @@
                 clearPage();
                 setPageAreaImage();
             }
+        }).renderingStopped(function() {
+            clear(true);
+            showError(sr.renderingCanceled);
         });
         function enableTouch(dom) {
             var allowSwipeLeft, allowSwipeRight;
@@ -3573,24 +3604,25 @@
             return findPage(controller.currentPageNumber());
         }
         function findPage(pageNumber) {
-            var page;
+            var result;
+            var allPages = $pageContainer.find(".trv-report-page");
             if (controller.pageMode() === trv.PageModes.SINGLE_PAGE) {
-                utils.each($pageContainer.find(".trv-report-page"), function(index, page1) {
-                    if (pageNo(page1) === pageNumber) {
-                        page = page1;
+                utils.each(allPages, function(index, page) {
+                    if (pageNo(page) === pageNumber) {
+                        result = page;
                     }
-                    return !page;
+                    return !result;
                 });
             } else {
-                var allPages = $pageContainer.find(".trv-report-page");
-                $.each(allPages, function(index, pageDom) {
-                    var dataPageNumber = parseInt($(pageDom).attr("data-page"));
+                $.each(allPages, function(index, page) {
+                    var dataPageNumber = parseInt($(page).attr("data-page"));
                     if (dataPageNumber === pageNumber) {
-                        page = pageDom;
+                        result = page;
+                        return false;
                     }
                 });
             }
-            return page;
+            return result;
         }
         function navigateToPage(pageNumber, targetElement) {
             if (documentReady) {
@@ -3713,6 +3745,7 @@
                 scale = Math.min(scaleW, scaleH);
             }
             $target.data("pageScale", scale);
+            $page.data("pageScale", scale);
             if (!pageSkeletonContent) {
                 domUtils.scale($pageContent, scale, scale);
             }
@@ -4053,7 +4086,10 @@
                 args.visible = documentMapVisible;
             }).setDocumentMapVisible(function(event, args) {
                 documentMapVisible = args.visible;
-                showDocumentMap(documentMapNecessary);
+                showDocumentMap(documentMapVisible && documentMapNecessary);
+            }).renderingStopped(function() {
+                documentMapNecessary = false;
+                showDocumentMap(false);
             });
         }
         function replaceStringResources($documentMap) {
@@ -4288,7 +4324,7 @@
                 }
             }
             function applyAriaSelected(selection) {
-                var children = listView.element.children();
+                var children = $list.find(".trv-listviewitem");
                 utils.each(children, function() {
                     var $item = $(this);
                     var isSelected = selection.filter($item).length > 0;
@@ -4367,7 +4403,7 @@
                 if (!Array.isArray(items)) {
                     items = [ items ];
                 }
-                var children = listView.element.children();
+                var children = $list.find(".trv-listviewitem");
                 utils.each(parameter.availableValues, function(i, av) {
                     var selected = false;
                     utils.each(items, function(j, v) {
@@ -4571,7 +4607,7 @@
                 }
             }
             function setSelectedItems(value) {
-                var items = listView.element.children();
+                var items = $list.find(".trv-listviewitem");
                 utils.each(parameter.availableValues, function(i, av) {
                     var availableValue = av.value;
                     if (value instanceof Date) {
@@ -5508,7 +5544,8 @@
     function uiController(options) {
         var stateFlags = {
             ExportInProgress: 1 << 0,
-            PrintInProgress: 1 << 1
+            PrintInProgress: 1 << 1,
+            RenderInProgress: 1 << 2
         };
         function getState(flags) {
             return (state & flags) != 0;
@@ -5571,6 +5608,7 @@
             var sendEmailDialogState = getSendEmailDialogState();
             commands.goToFirstPage.enabled(prevPage);
             commands.goToPrevPage.enabled(prevPage);
+            commands.stopRendering.enabled(hasReport && getState(stateFlags.RenderInProgress));
             commands.goToLastPage.enabled(nextPage);
             commands.goToNextPage.enabled(nextPage);
             commands.goToPage.enabled(hasPages);
@@ -5602,9 +5640,15 @@
             commands.toggleZoomMode.checked(args.scaleMode === trv.ScaleModes.FIT_PAGE || args.scaleMode === trv.ScaleModes.FIT_PAGE_WIDTH);
         });
         controller.currentPageChanged(updateUI);
-        controller.beforeLoadReport(updateUI);
+        controller.beforeLoadReport(function() {
+            setState(stateFlags.RenderInProgress, true);
+            updateUI();
+        });
         controller.reportLoadProgress(updateUI);
-        controller.reportLoadComplete(updateUI);
+        controller.reportLoadComplete(function() {
+            setState(stateFlags.RenderInProgress, false);
+            updateUI();
+        });
         controller.reportSourceChanged(updateUI);
         controller.viewModeChanged(updateUI);
         controller.pageModeChanged(function() {
@@ -5619,11 +5663,16 @@
         controller.error(function() {
             setState(stateFlags.ExportInProgress, false);
             setState(stateFlags.PrintInProgress, false);
+            setState(stateFlags.RenderInProgress, false);
             updateUI();
         });
         controller.updateUIInternal(updateUI);
         controller.setSearchDialogVisible(updateUI);
         controller.setSendEmailDialogVisible(updateUI);
+        controller.renderingStopped(function() {
+            setState(stateFlags.RenderInProgress, false);
+            updateUI();
+        });
         updateUI();
     }
     trv.uiController = uiController;
@@ -5817,6 +5866,9 @@
             }),
             historyForward: new command(function() {
                 historyManager.forward();
+            }),
+            stopRendering: new command(function() {
+                controller.stopRendering();
             }),
             goToPrevPage: new command(function() {
                 controller.navigateToPage(controller.currentPageNumber() - 1);
@@ -7111,6 +7163,7 @@
                     dataTextField: "value",
                     dataValueField: "value",
                     dataSource: mruList,
+                    contentElement: "",
                     change: kendoComboBoxSelect,
                     ignoreCase: false,
                     filtering: onInputFiltering,
@@ -7274,6 +7327,7 @@
                 selectable: true,
                 navigatable: true,
                 dataSource: {},
+                contentElement: "",
                 template: "<div class='trv-search-dialog-results-row'><span>#: description #</span> <span class='trv-search-dialog-results-pageSpan'>" + sr.searchDialogPageText + " #:page#</span></div>",
                 change: function() {
                     var index = this.select().index(), view = this.dataSource.view(), dataItem = view[index];
@@ -7826,7 +7880,7 @@
         if (!validateOptions(options)) {
             return;
         }
-        var version = "14.1.20.618";
+        var version = "15.0.21.326";
         options = utils.extend({}, getDefaultOptions(svcApiUrl, version), options);
         settings = new ReportViewerSettings(persistanceKey, options.persistSession ? window.sessionStorage : new MemStorage(), {
             scale: options.scale,
@@ -8314,4 +8368,4 @@
     };
     trv.ReportViewer = ReportViewer;
 })(window.telerikReportViewer = window.telerikReportViewer || {}, jQuery, window, document);
-/* DO NOT MODIFY OR DELETE THIS LINE! UPGRADE WIZARD CHECKSUM 49569A74B9EE3FEDFD5951FABDCA129C */
+/* DO NOT MODIFY OR DELETE THIS LINE! UPGRADE WIZARD CHECKSUM 048D0DE9EBD7297DD1D68496E610CC87 */
