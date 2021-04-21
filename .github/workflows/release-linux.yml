@@ -29,10 +29,10 @@ jobs:
       run: dotnet build ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configuration Release --no-restore
 
     - name: Publish Application
-      run: dotnet publish ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --framework net5.0 --configuration Release --no-restore --output ReportingOnLinux/ReportingOnLinux/bin/Release/net5.0/publish/
+      run: dotnet publish ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj -f net5.0 -r linux-arm64 -c Release --self-contained --no-restore -o ReportingOnLinux/ReportingOnLinux/bin/Release/net5.0/publish/
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: ReportingRestService_NET50
+        name: ReportingServer_NET50
         path: ReportingOnLinux/ReportingOnLinux/bin/
