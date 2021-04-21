@@ -1,7 +1,13 @@
 # TseExamples
 The core repository for TSE example apps across all DevCraft products.
 
-## UploadingToWebApi
+## 1. Reporting REST API on Linux
+
+This project shows that you can build an ASP.NET application  with .NET 5 and deploy to Linux. This works on any target that .NET Core/.NET 5 has a runtime for (e.g. from Ubuntu to Raspberry Pi OS).
+
+Go to https://docs.microsoft.com/en-us/dotnet/core/install/linux to find runtime installation instructions for your version of Linux.
+
+## 2 UploadingToWebApi
 
 This demo contains three projects. An ASP.NET application with Web APIs and MVC views, and WPF & UWP client applications to interact with the APIs.
 
