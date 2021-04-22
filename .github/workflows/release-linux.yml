@@ -66,7 +66,7 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: ReportingServer_Linux-ARM64
+        name: ReportingServer_Linux-ARM
         path: ReportingOnLinux/ReportingOnLinux/bin/Release/net5.0/
   
   build_linux-x64:
