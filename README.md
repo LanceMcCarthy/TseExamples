@@ -29,7 +29,7 @@ This demo contains three projects:
 
 **Telerik Reporting REST Service**
 
-This is a straightforward demo that hosts a Telerik Reporting REST Service (ReportsController.cs) so that you can see the HTML5 ReportViewer in an MVC View ([visit the live demo](http://webapifortelerikdemos.azurewebsites.net/Home/ReportViewerView)).
+This is a straightforward demo that hosts a Telerik Reporting REST Service (ReportsController.cs) so that you can see the HTML5 ReportViewer in an MVC View ([visit the live demo](https://webapifortelerikdemos.azurewebsites.net/Home/ReportViewerView1)).
 
 **PDF Generator Web API**
 
