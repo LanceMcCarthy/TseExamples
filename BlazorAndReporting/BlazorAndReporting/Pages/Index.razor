@@ -1,0 +1,29 @@
+﻿@page "/"
+
+@using Telerik.ReportViewer.Blazor
+
+<style>
+    #rv1 {
+        position: relative;
+        width: 1200px;
+        height: 600px;
+    }
+</style>
+
+<ReportViewer ViewerId="rv1"
+              ServiceUrl="/api/reports"
+              ReportSource="@(new ReportSourceOptions()
+                            {
+                                Report = "BarcodesReport.trdp"
+                            })"
+              Parameters="@(new ParametersOptions { Editors = new EditorsOptions { MultiSelect = EditorType.ComboBox, SingleSelect = EditorType.ComboBox } })"
+              ScaleMode="@(ScaleMode.Specific)"
+              Scale="1.0" />
+
+@code {
+
+    public async void Show(MouseEventArgs args)
+    {
+
+    }
+}
