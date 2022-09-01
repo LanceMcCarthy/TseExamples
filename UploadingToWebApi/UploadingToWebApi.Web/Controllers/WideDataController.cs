@@ -1,22 +1,37 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
+using CommonHelpers.Services;
 
 namespace UploadingToWebApi.Web.Controllers
 {
     public class WideDataController : ApiController
     {
-        // GET: api/WideData
-        public Dictionary<string,string> Get(int startRow, int startColumn, int numberOfRows, int numberOfColumns)
-        {
-            var data = new Dictionary<string, string>();
+        private Random rand = new Random();
 
-            for (var i = startColumn; i < numberOfColumns; i++)
+        // GET: api/<WideDataController>
+        public IEnumerable<Dictionary<string, string>> Get(int startRow, int startColumn, int numberOfRows, int numberOfColumns)
+        {
+            var names = SampleDataService.Current.GeneratePeopleNames().ToList();
+
+            var data = new List<Dictionary<string, string>>();
+
+
+
+            for (var p = startRow; p < numberOfRows; p++)
             {
-                for (var j = startRow; j < numberOfRows; j++)
+                // create an item for every row needed
+                var innerData = new Dictionary<string, string>();
+
+                for (var i = startColumn; i < numberOfColumns; i++)
                 {
-                    data[$"Column{j}"] = $"Row{j}";
+                    innerData[$"Col{i + 1}"] = names[rand.Next(0, 42)];
                 }
+
+                data.Add(innerData);
             }
+
 
             return data;
         }
