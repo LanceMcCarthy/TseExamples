@@ -18,6 +18,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="CommonHelpers" Version="1.2.0" />
     <PackageReference Include="Telerik.Reporting.OpenXmlRendering" Version="16.1.22.511" />
     <PackageReference Include="Telerik.Reporting.Services.AspNetCore" Version="16.1.22.511" />
     <PackageReference Include="Telerik.ReportViewer.Blazor" Version="16.1.22.511" />
