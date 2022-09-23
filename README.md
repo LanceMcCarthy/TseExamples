@@ -31,7 +31,7 @@ This demo contains three projects:
 
 This is a straightforward demo that hosts a Telerik Reporting REST Service (ReportsController.cs) so that you can see the HTML5 ReportViewer in an MVC View ([visit the live demo](https://webapifortelerikdemos.azurewebsites.net/Home/ReportViewerView1)).
 
-**PDF Generator Web API**
+## PDF Generator Web API
 
 The PDF Generator WebAPI is an ApiController that will return a PDF file from custom uploaded content in the form of JSON data. This means you can use any client application to create the PDF.
 
