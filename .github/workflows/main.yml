@@ -2,11 +2,17 @@ name: Build Main
 
 on:
   push:
-    branches: [ main ]
-
+    branches:
+    - main
+    paths:
+      - 'BlazorAndReporting/**/*'
+      - 'ReportingOnLinux/**/*'
+      - 'UploadingToWebApi/**/*'
+      - '.github/workflows/main.yml'
+      
 jobs:
   build_linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     
     steps:
     - name: Checkout
@@ -17,7 +23,7 @@ jobs:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1.7.2
       with:
-        dotnet-version: 5.0.200
+        dotnet-version: 5.0
 
     - name: Restore NuGet Packages
       run: dotnet restore ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configfile ReportingOnLinux/nuget.config --runtime any
