@@ -14,7 +14,22 @@ Endpoints:
 
 ### TseExamples/BlazorAndReporting
 
-This project is to provide testing options for both Blazor and Reporting 
+This project is to provide testing options for both Blazor and Reporting.
+
+One of the most prominent features is the `WideDataController`, where you can fetch any number of rows/columns that you need for a demo.
+
+```csharp
+public IEnumerable<Dictionary<string, string>> Get(
+    int startRow, 
+    int startColumn, 
+    int numberOfRows, 
+    int numberOfColumns)
+{
+  // returns a List<Dictionary<string, string>>() populated with names
+}
+```
+
+> Example request => https://uiforblazor.azurewebsites.net/api/WideData?startRow=0&startColumn=0&numberOfRows=10&numberOfColumns=10
 
 ### TseExamples/UploadingToWebApi
 
