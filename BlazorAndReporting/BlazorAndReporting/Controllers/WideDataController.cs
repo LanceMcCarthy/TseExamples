@@ -7,7 +7,7 @@ namespace BlazorAndReporting.Controllers
     [ApiController]
     public class WideDataController : ControllerBase
     {
-        private Random rand = new ();
+        private readonly Random rand = new ();
 
         // GET: api/<WideDataController>
         public IEnumerable<Dictionary<string, string>> Get(int startRow, int startColumn, int numberOfRows, int numberOfColumns)
@@ -15,8 +15,6 @@ namespace BlazorAndReporting.Controllers
             var names = SampleDataService.Current.GeneratePeopleNames().ToList();
 
             var data = new List<Dictionary<string, string>>();
-
-            
 
             for (var p = startRow; p < numberOfRows; p++)
             {
@@ -35,29 +33,29 @@ namespace BlazorAndReporting.Controllers
             return data;
         }
 
-        // GET api/<WideDataController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET api/<WideDataController>/5
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
-        // POST api/<WideDataController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //// POST api/<WideDataController>
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
-        // PUT api/<WideDataController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// PUT api/<WideDataController>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // DELETE api/<WideDataController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<WideDataController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

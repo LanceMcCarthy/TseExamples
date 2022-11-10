@@ -19,10 +19,10 @@
   
   <ItemGroup>
     <PackageReference Include="CommonHelpers" Version="1.2.0" />
-    <PackageReference Include="Telerik.Reporting.OpenXmlRendering" Version="16.1.22.511" />
-    <PackageReference Include="Telerik.Reporting.Services.AspNetCore" Version="16.1.22.511" />
-    <PackageReference Include="Telerik.ReportViewer.Blazor" Version="16.1.22.511" />
-    <PackageReference Include="Telerik.UI.for.Blazor" Version="3.3.0" />
+    <PackageReference Include="Telerik.Reporting.OpenXmlRendering" Version="16.2.22.1109" />
+    <PackageReference Include="Telerik.Reporting.Services.AspNetCore" Version="16.2.22.1109" />
+    <PackageReference Include="Telerik.ReportViewer.Blazor" Version="16.2.22.1109" />
+    <PackageReference Include="Telerik.UI.for.Blazor" Version="3.7.0" />
   </ItemGroup>
 
 </Project>

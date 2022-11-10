@@ -5,33 +5,49 @@ A set of demo projects for special edge cases presented to Progress DevTools Sup
 | Workflow      | Build Status |
 |---------------|--------------|
 | `main`         | [![Build Main](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/main.yml/badge.svg)](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/main.yml)                             |
-| `release-linux` | [![Publish Linux Server](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/release-linux.yml/badge.svg)](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/release-linux.yml) |
+
+Endpoints:
+* UploadingToWebApi => https://webapifortelerikdemos.azurewebsites.net/
+* BlazorandReporting => https://uiforblazor.azurewebsites.net/
 
 ## Demos
 
-### 1. Reporting REST API on Linux using .NET 5.0
+### TseExamples/BlazorAndReporting
 
-This project shows that you can build an ASP.NET application  with .NET 5 and deploy to Linux. This works on any target that .NET Core/.NET 5 has a runtime for (e.g. from Ubuntu to Raspberry Pi OS).
+This project is to provide testing options for both Blazor and Reporting.
 
-Go to https://docs.microsoft.com/en-us/dotnet/core/install/linux to find runtime installation instructions for your version of Linux.
+One of the most prominent features is the `WideDataController`, where you can fetch any number of rows/columns that you need for a demo.
 
-### 2 Uploading To WebApi
+```csharp
+public IEnumerable<Dictionary<string, string>> Get(
+    int startRow, 
+    int startColumn, 
+    int numberOfRows, 
+    int numberOfColumns)
+{
+  // returns a List<Dictionary<string, string>>() populated with names
+}
+```
+
+> Example request => https://uiforblazor.azurewebsites.net/api/WideData?startRow=0&startColumn=0&numberOfRows=10&numberOfColumns=10
+
+### TseExamples/UploadingToWebApi
 
 This demo contains three projects:
 
 - Server Application with Web and REST APIs
   - ASP.NET MVC5
-- Client Applications to consume Web APIs
+- Client Applications that use the Web APIs
   - WPF
   - UWP
 
-#### Server
+#### Server-side
 
 **Telerik Reporting REST Service**
 
 This is a straightforward demo that hosts a Telerik Reporting REST Service (ReportsController.cs) so that you can see the HTML5 ReportViewer in an MVC View ([visit the live demo](https://webapifortelerikdemos.azurewebsites.net/Home/ReportViewerView1)).
 
-## PDF Generator Web API
+**PDF Generator Web API**
 
 The PDF Generator WebAPI is an ApiController that will return a PDF file from custom uploaded content in the form of JSON data. This means you can use any client application to create the PDF.
 
@@ -39,20 +55,15 @@ The PDF Generator WebAPI is an ApiController that will return a PDF file from cu
 public class MyPdfContent
 {
     public string Title { get; set; }
-
     public string Body { get; set; }
-
     public string BackgroundColor { get; set; }
-
     public string RequestedFileName { get; set; }
-
     public string ImageBase64 { get; set; }
 }
 ```
 
-#### Client
+#### Client-side
 
 Here's the UWP client example app rendering runtime UI (XAML) as base64 image data, which gets uploaded to the server and inserted in a dynamically created PDF document.
-
 
 ![image](https://user-images.githubusercontent.com/3520532/47941263-d3e83680-dec3-11e8-8020-148c385cb11e.png)
