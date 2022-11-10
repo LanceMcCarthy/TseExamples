@@ -28,10 +28,13 @@ jobs:
         dotnet-version: 6.0
 
     - name: Restore NuGet Packages
-      run: dotnet restore BlazorAndReporting/BlazorAndReporting.csproj --configfile ./nuget.config --runtime any
+      run: |
+        echo checking workspace
+        echo ${{ env.GITHUB_WORKSPACE }}
+        dotnet restore BlazorAndReporting/BlazorAndReporting/BlazorAndReporting.csproj --configfile ./nuget.config --runtime any
 
     - name: Build Solution
-      run: dotnet build BlazorAndReporting/BlazorAndReporting.csproj --configuration Debug --no-restore
+      run: dotnet build BlazorAndReporting/BlazorAndReporting/BlazorAndReporting.csproj --configuration Debug --no-restore
 
   build_wpf_windows:
     runs-on: windows-latest
