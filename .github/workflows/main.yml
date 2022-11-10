@@ -28,7 +28,7 @@ jobs:
         dotnet-version: 6.0
 
     - name: Restore NuGet Packages
-      run: dotnet restore BlazorAndReporting/BlazorAndReporting.csproj --configfile BlazorAndReporting/nuget.config --runtime any
+      run: dotnet restore BlazorAndReporting/BlazorAndReporting.csproj --configfile ./nuget.config --runtime any
 
     - name: Build Solution
       run: dotnet build BlazorAndReporting/BlazorAndReporting.csproj --configuration Debug --no-restore
@@ -51,7 +51,7 @@ jobs:
         nuget-version: 5.x
 
     - name: Restore NuGet Packages
-      run: nuget restore UploadingToWebApi\UploadingToWebApi\UploadingToWebApi.Wpf.csproj -ConfigFile UploadingToWebApi\nuget.config -SolutionDirectory UploadingToWebApi\
+      run: nuget restore UploadingToWebApi\UploadingToWebApi\UploadingToWebApi.Wpf.csproj -ConfigFile ./nuget.config -SolutionDirectory UploadingToWebApi\
 
     - name: Build the WPF application
       run: msbuild UploadingToWebApi\UploadingToWebApi\UploadingToWebApi.Wpf.csproj /t:Restore /p:Configuration=Debug /p:RuntimeIdentifier=win-x86
@@ -73,7 +73,7 @@ jobs:
         nuget-version: 5.x
 
     - name: Restore NuGet Packages
-      run: nuget restore UploadingToWebApi\UploadingToWebApi.Web\UploadingToWebApi.Web.csproj -ConfigFile UploadingToWebApi\nuget.config -SolutionDirectory UploadingToWebApi\
+      run: nuget restore UploadingToWebApi\UploadingToWebApi.Web\UploadingToWebApi.Web.csproj -ConfigFile ./nuget.config -SolutionDirectory UploadingToWebApi\
 
     - name: Build the WPF application
       run: msbuild UploadingToWebApi\UploadingToWebApi.Web\UploadingToWebApi.Web.csproj /t:Restore /p:Configuration=Debug /p:RuntimeIdentifier=win-x86
@@ -96,7 +96,7 @@ jobs:
         nuget-version: 5.x
 
     - name: Restore NuGet Packages
-      run: nuget restore UploadingToWebApi\UploadingToWebApi.Uwp\UploadingToWebApi.Uwp.csproj -ConfigFile UploadingToWebApi\nuget.config
+      run: nuget restore UploadingToWebApi\UploadingToWebApi.Uwp\UploadingToWebApi.Uwp.csproj -ConfigFile ./nuget.config
     
     - name: Build UWP Project
       run: msbuild UploadingToWebApi\UploadingToWebApi.Uwp\UploadingToWebApi.Uwp.csproj /p:Platform=x64 /p:Configuration=Debug /p:AppxPackageSigningEnabled=false /p:UapAppxPackageBuildMode=CI /p:AppxBundle=Never
