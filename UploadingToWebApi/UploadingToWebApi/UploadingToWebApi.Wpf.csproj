@@ -142,49 +142,49 @@
       <Version>4.3.2</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Cloud.Controls.for.Wpf">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Cloud.for.Wpf">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Cloud.for.Wpf.Xaml">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Controls.FixedDocumentViewers.for.Wpf.Xaml">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Controls.for.Wpf">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Controls.for.Wpf.Xaml">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Controls.Input.for.Wpf.Xaml">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Controls.Navigation.for.Wpf.Xaml">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Data.for.Wpf.Xaml">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Documents.Core">
-      <Version>2021.1.322</Version>
+      <Version>2022.3.1108</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Documents.Fixed">
-      <Version>2021.1.322</Version>
+      <Version>2022.3.1108</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Documents.Flow">
-      <Version>2021.1.322</Version>
+      <Version>2022.3.1108</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf">
-      <Version>2021.1.322</Version>
+      <Version>2022.3.1108</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Documents.for.Wpf.Xaml">
-      <Version>2021.1.325</Version>
+      <Version>2022.3.1109</Version>
     </PackageReference>
     <PackageReference Include="Telerik.Windows.Zip">
-      <Version>2021.1.322</Version>
+      <Version>2022.3.1108</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
