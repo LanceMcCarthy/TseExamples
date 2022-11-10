@@ -13,7 +13,7 @@ env:
   TELERIK_PASSWORD: ${{ secrets.MyTelerikAccountPassword }}
   
 jobs:
-  build_linux:
+  build_blazor_linux:
     runs-on: ubuntu-latest
     
     steps:
@@ -28,15 +28,13 @@ jobs:
         dotnet-version: 6.0
 
     - name: Restore NuGet Packages
-      run: dotnet restore ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configfile ReportingOnLinux/nuget.config --runtime any
+      run: dotnet restore BlazorAndReporting/BlazorAndReporting.csproj --configfile BlazorAndReporting/nuget.config --runtime any
 
     - name: Build Solution
-      run: dotnet build ReportingOnLinux/ReportingOnLinux/ReportingOnLinux.csproj --configuration Debug --no-restore
+      run: dotnet build BlazorAndReporting/BlazorAndReporting.csproj --configuration Debug --no-restore
 
-  build_wpf:
+  build_wpf_windows:
     runs-on: windows-latest
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true # this is to allow nuget.exe to be set to PATH
     
     steps:
     - name: Checkout
@@ -58,11 +56,8 @@ jobs:
     - name: Build the WPF application
       run: msbuild UploadingToWebApi\UploadingToWebApi\UploadingToWebApi.Wpf.csproj /t:Restore /p:Configuration=Debug /p:RuntimeIdentifier=win-x86
 
-  build_web:
+  build_web_windows:
     runs-on: windows-latest
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true # this is to allow nuget.exe to be set to PATH
-    
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -83,7 +78,7 @@ jobs:
     - name: Build the WPF application
       run: msbuild UploadingToWebApi\UploadingToWebApi.Web\UploadingToWebApi.Web.csproj /t:Restore /p:Configuration=Debug /p:RuntimeIdentifier=win-x86
 
-  build_uwp:
+  build_uwp_windows:
     runs-on: windows-latest
     
     steps:
