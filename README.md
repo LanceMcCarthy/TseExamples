@@ -2,36 +2,9 @@
 
 A set of demo projects for special edge cases presented to Progress DevTools Support Engineers.
 
-| Workflow      | Build Status |
-|---------------|--------------|
-| `main`         | [![Build Main](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/main.yml/badge.svg)](https://github.com/LanceMcCarthy/TseExamples/actions/workflows/main.yml)                             |
+> This repo has been phased out, replaced by product specific repos such as https://github.com/LanceMcCarthy/CustomMauiExamples and https://github.com/LanceMcCarthy/CustomXamarinDemos or https://github.com/LanceMcCarthy/DevOpsExamples
 
-Endpoints:
-* UploadingToWebApi => https://webapifortelerikdemos.azurewebsites.net/
-* BlazorandReporting => https://uiforblazor.azurewebsites.net/
-
-## Demos
-
-### TseExamples/BlazorAndReporting
-
-This project is to provide testing options for both Blazor and Reporting.
-
-One of the most prominent features is the `WideDataController`, where you can fetch any number of rows/columns that you need for a demo.
-
-```csharp
-public IEnumerable<Dictionary<string, string>> Get(
-    int startRow, 
-    int startColumn, 
-    int numberOfRows, 
-    int numberOfColumns)
-{
-  // returns a List<Dictionary<string, string>>() populated with names
-}
-```
-
-> Example request => https://uiforblazor.azurewebsites.net/api/WideData?startRow=0&startColumn=0&numberOfRows=10&numberOfColumns=10
-
-### TseExamples/UploadingToWebApi
+### Project: UploadingToWebApi
 
 This demo contains three projects:
 
@@ -40,6 +13,8 @@ This demo contains three projects:
 - Client Applications that use the Web APIs
   - WPF
   - UWP
+
+It is available at https://webapifortelerikdemos.azurewebsites.net/
 
 #### Server-side
 
